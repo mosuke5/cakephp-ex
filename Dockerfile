@@ -8,7 +8,7 @@ COPY .s2i/bin /tmp/scripts
 # Copying in source code
 COPY . /tmp/src
 # Change file ownership to the assemble user. Builder image must support chown command.
-RUN chown -R 1001:0 /tmp/scripts /tmp/src
+RUN chown -R 1001:0 /tmp/scripts /tmp/src && chmod +x /tmp/scripts/*
 USER 1001
 RUN /tmp/scripts/assemble
 # Run script sourced from builder image based on user input or image metadata.
